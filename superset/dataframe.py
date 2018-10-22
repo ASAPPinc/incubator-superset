@@ -71,7 +71,10 @@ class SupersetDataFrame(object):
 
         data = data or []
         self.df = (
-            pd.DataFrame(list(data), columns=self.column_names).infer_objects())
+            pd.DataFrame(
+                list(data),
+                columns=[db_engine_spec.normalize_column_name(c) for c in self.column_names]
+            ).infer_objects())
 
         self._type_dict = {}
         try:

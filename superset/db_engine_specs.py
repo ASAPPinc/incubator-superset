@@ -409,6 +409,15 @@ class BaseEngineSpec(object):
     def mutate_expression_label(label):
         return label
 
+    @staticmethod
+    def normalize_column_name(column_name):
+        """
+        Column name as interpreted by the DB engine
+        :param column_name: string column name
+        :return: normalized column name
+        """
+        return column_name
+
 
 class PostgresBaseEngineSpec(BaseEngineSpec):
     """ Abstract class for Postgres 'like' databases """
